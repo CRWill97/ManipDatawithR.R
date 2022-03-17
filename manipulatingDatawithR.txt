@@ -1,0 +1,96 @@
+Lab2.MANI.DATA.R
+Cameron Willliams
+Sun Sep 29 12:52:55 2019
+#TASK 1
+
+my_mtcars <- mtcars
+
+#Within "mtcars" there is 32 observations and 11 variables
+str(my_mtcars)
+## 'data.frame':    32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
+#Unit Engine = displacement / cylinders
+my_mtcars$UnitEngine <- my_mtcars$disp/my_mtcars$cyl
+
+my_mtcars$UnitEngine
+##  [1] 26.66667 26.66667 27.00000 43.00000 45.00000 37.50000 45.00000
+##  [8] 36.67500 35.20000 27.93333 27.93333 34.47500 34.47500 34.47500
+## [15] 59.00000 57.50000 55.00000 19.67500 18.92500 17.77500 30.02500
+## [22] 39.75000 38.00000 43.75000 50.00000 19.75000 30.07500 23.77500
+## [29] 43.87500 24.16667 37.62500 30.25000
+#summaize my_mtcars
+summary(my_mtcars$UnitEngine)
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   17.77   26.92   34.48   35.03   43.19   59.00
+#TASK 2
+
+pets <- c(1,1,1,0,0)
+order <- c(3,1,2,3,3)
+siblings <- c(0,3,5,0,0)
+ID <- c(1,2,3,4,5)
+
+
+#Use DataFrame to combine pets order sibling ID
+
+myFriends <- data.frame(pets, order, siblings, ID)
+
+#report
+myFriends
+##   pets order siblings ID
+## 1    1     3        0  1
+## 2    1     1        3  2
+## 3    1     2        5  3
+## 4    0     3        0  4
+## 5    0     3        0  5
+#summary
+summary(myFriends)
+##       pets         order        siblings         ID   
+##  Min.   :0.0   Min.   :1.0   Min.   :0.0   Min.   :1  
+##  1st Qu.:0.0   1st Qu.:2.0   1st Qu.:0.0   1st Qu.:2  
+##  Median :1.0   Median :3.0   Median :0.0   Median :3  
+##  Mean   :0.6   Mean   :2.4   Mean   :1.6   Mean   :3  
+##  3rd Qu.:1.0   3rd Qu.:3.0   3rd Qu.:3.0   3rd Qu.:4  
+##  Max.   :1.0   Max.   :3.0   Max.   :5.0   Max.   :5
+#list ID
+myFriends$ID
+## [1] 1 2 3 4 5
+#list Pets
+myFriends$pets
+## [1] 1 1 1 0 0
+#list Order
+myFriends$order
+## [1] 3 1 2 3 3
+#list Siblings 
+myFriends$siblings
+## [1] 0 3 5 0 0
+#Printing out fifth observatoin in Pets variable 
+myFriends$pets[5]
+## [1] 0
+#cbind age and MyFriends
+age <- c(23,21,45,21,18)
+cbind(age,myFriends)
+##   age pets order siblings ID
+## 1  23    1     3        0  1
+## 2  21    1     1        3  2
+## 3  45    1     2        5  3
+## 4  21    0     3        0  4
+## 5  18    0     3        0  5
+#Cbind names and freinds 
+names <- c("John", "Smith", "Susan", "Joe", "Wendy")
+cbind(names,myFriends)
+##   names pets order siblings ID
+## 1  John    1     3        0  1
+## 2 Smith    1     1        3  2
+## 3 Susan    1     2        5  3
+## 4   Joe    0     3        0  4
+## 5 Wendy    0     3        0  5
